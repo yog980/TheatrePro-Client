@@ -1,0 +1,24 @@
+.card-container
+{
+  justify-content: space-between;
+  margin-left: 5rem;
+  width: 100%;
+}
+
+.custom-card {
+  display: inline-block;
+  width: 30rem;
+  margin: 30px;
+}
+
+#book-button {
+  background-color: rgb(207, 193, 60);
+  color: aliceblue;
+  font-size: 30px;
+  width: 100%;
+  font-weight: bold;
+}
+
+tr {
+  font-weight: bold;
+}

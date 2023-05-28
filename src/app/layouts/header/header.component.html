@@ -1,0 +1,32 @@
+<div>
+  <ul class="header">
+    <li class="logo">
+     <img src="../../assets/logo.png"  alt="no logo">
+    </li>
+    <li class="nav-items">
+      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">HOME</a>
+    </li>
+    <li class="nav-items">
+      <a routerLink="/movies" routerLinkActive="active" ariaCurrentWhenActive="page">MOVIES</a>
+    </li>
+    <li class="search">
+      <input type="text" class="search-input">
+      <button id="search-button" type="button">
+        <i class="bi bi-search"></i>
+      </button>
+    </li>
+    <li>
+      <div ngbDropdown>
+        <button ngbDropdownToggle class="dropdown-button" id="dropdownMenuButton1" aria-expanded="false">
+          <i class="bi bi-person-vcard"></i>
+        </button>
+        <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" class="menu-dropdown">
+          <li><a ngbDropdownItem href="#">Login/Signup</a></li>
+          <li><a ngbDropdownItem href="#">Profile</a></li>
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+</div>
+

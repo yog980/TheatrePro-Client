@@ -1,0 +1,23 @@
+<div style="display:flex;flex-direction:row;">
+  <div style="width: 10%;display:flex;justify-content:end">
+    <a class="arrow" routerLink="/movie-details"><i class="bi bi-arrow-left-circle" style="color:rgb(16, 17, 17)"></i></a>
+  </div>
+  <div style="width: 80%;">
+    <div class="card show-card">
+      <div class="card" *ngFor="let responses of showResponse">
+        <tr style="border-spacing: 100px;">
+          <td>
+            <span style="font-weight:bold;">{{ responses.theatre.title }} Shift : {{ responses.shift }}</span><br>
+            <p>{{ responses.startDate }}</p>
+          </td>
+          <td>
+            <button type="button" routerLink="/theatre" (click)="activateShow(responses)" class="btn btn-outline-success" style="width: 200px;border-radius:0px;height:70px;">{{ responses.startTime }}</button>
+          </td>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

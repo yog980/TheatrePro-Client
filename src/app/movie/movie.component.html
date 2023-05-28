@@ -1,0 +1,20 @@
+<div class="card-container">
+  <div class="card custom-card" style="width: 22rem;" *ngFor="let movie of movies">
+    <img class="card-img-top" height="400px;" alt="Card image cap" src="{{'data:image/jpg;base64,' + movie.image}}" />
+    <div class="card-body" style="height:17rem;">
+      <h5 class="card-title" style="font-weight: bold;">{{ movie.title }}</h5>
+      <p class="card-text">{{ movie.description }}</p>
+      <tr>
+        <td>Duration : </td>
+        <td>{{ movie.duration }}</td>
+      </tr>
+      <tr>
+        <td>Release Date : &nbsp;</td>
+        <td>{{ movie.releaseDate }}</td>
+      </tr>
+    </div>
+    <div>
+      <button id="book-button" routerLink="/movie-details" (click) = "movieDetails(movie)">BOOK</button>
+    </div>
+  </div>
+</div>

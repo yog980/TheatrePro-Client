@@ -1,0 +1,16 @@
+.show-card {
+  width: 50%;
+  margin:auto;
+  background-color: rgb(239, 247, 247);
+}
+.shows{
+  width:90%;
+  margin:10px auto 10px auto;
+  justify-content:space-between;
+}
+
+.arrow {
+  font-size: 70px;
+  font-weight: bold;
+  margin: 30px    ;
+}

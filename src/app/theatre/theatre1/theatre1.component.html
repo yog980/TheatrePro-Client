@@ -1,0 +1,18 @@
+<div class="screen">
+  SCREEN
+</div>
+<div class="grid-container">
+  <div  *ngFor="let seat of seats;let myIndex = index">
+    <button class="grid-item"
+    [disabled]="disabled.includes(myIndex)"
+    [hidden]="disabled.includes(myIndex)"
+    >
+    <span *ngIf="myIndex%23 == 0">
+      {{ alphabet[myIndex/23] }}
+    </span>
+      <span *ngIf="myIndex%23 != 0" class="material-symbols-outlined" style="color:aquamarine" [style.color]="(myIndex < 92)?'red':(myIndex < 184)?'blue':'orange'">
+        chair
+        </span>
+    </button>
+  </div>
+</div>

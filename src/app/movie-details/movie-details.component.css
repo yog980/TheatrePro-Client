@@ -1,0 +1,22 @@
+.book-button {
+  border-radius: 0px;
+  font-size:30px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+tr td {
+  font-size: 30px;
+  margin: 20px;
+}
+
+.arrow {
+  font-size: 70px;
+  font-weight: bold;
+  margin: 20px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+

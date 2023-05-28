@@ -1,0 +1,25 @@
+.movie-button {
+ margin-top: 200px;
+ text-align: center;
+ margin-bottom: 20px;
+}
+
+.movie-button button {
+  width: 260px;
+  border-radius: 0px;
+}
+
+.movies-list {
+  display: flex;
+}
+
+.movies-list .card {
+  margin: 30px;
+}
+
+#book-button {
+  background-color: rgb(207, 193, 60);
+  color: aliceblue;
+  font-size: 40px;
+  width: 100%;
+}

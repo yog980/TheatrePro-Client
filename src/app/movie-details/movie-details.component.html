@@ -1,0 +1,21 @@
+<div class="card" style="width: 70%;margin:auto;display:flex;flex-direction:row;">
+  <div style="width: 10%;">
+    <a class="arrow" routerLink="/movies"><i class="bi bi-arrow-left-circle" style="color:rgb(16, 17, 17)"></i></a>
+  </div>
+  <div style="width: 30%;">
+    <img class="card-img-top img img-fluid"  alt="Card image cap" src="{{'data:image/jpg;base64,' + movie.image}}"/>
+  </div>
+   <div style ="width:50%;" class="card-body">
+    <h5 class="card-title" style="font-size: 40px;">{{ movie.title }}</h5>
+    <p class="card-text" style="font-size: 30px;">{{ movie.description }}</p>
+    <tr>
+      <td>Duration : &nbsp;</td>
+      <td>{{ movie.duration }}</td>
+    </tr>
+    <tr>
+      <td>Release Date : &nbsp;</td>
+      <td>{{ movie.releaseDate }}</td>
+    </tr>
+    <button routerLink="/movie-show/{{movie.id}}" class="btn btn-outline-success book-button">BOOK NOW</button>
+  </div>
+</div>
