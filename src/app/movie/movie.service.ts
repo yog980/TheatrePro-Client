@@ -21,4 +21,8 @@ export class MovieService {
   getAllMovies(): Observable<MovieResponse[]> {
     return this.http.get<MovieResponse[]>(`${environment.apiUrl}/api/movie/all`);
   }
+
+  getAllTrendingMovies(): Observable<MovieResponse[]> {
+    return this.http.get<MovieResponse[]>(`${environment.apiUrl}/api/movie/movies/trending`);
+  }
 }

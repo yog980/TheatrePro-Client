@@ -11,7 +11,8 @@
             <p>{{ responses.startDate }}</p>
           </td>
           <td>
-            <button type="button" routerLink="/theatre" (click)="activateShow(responses)" class="btn btn-outline-success" style="width: 200px;border-radius:0px;height:70px;">{{ responses.startTime }}</button>
+            <!-- <button type="button" routerLink="/theatre/{{responses.id}}" (click)="activateShow(responses)" class="btn btn-outline-success" style="width: 200px;border-radius:0px;height:70px;"> {{  responses.startTime }} </button> -->
+            <button type="button" (click)="open(content,responses)"  class="btn btn-outline-success" style="width: 200px;border-radius:0px;height:70px;"> {{  responses.startTime }} </button>
           </td>
         </tr>
       </div>
@@ -19,5 +20,31 @@
   </div>
 
 </div>
+<ng-template #content let-modal>
+    <div class="modal-header custom-header">
+      <h1  id="modal-basic-title" style="text-align:center;font-weight:bold;">Choose Seats</h1>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body custom-body">
+      <button
+        *ngFor="let seat of seatSelection"
+        (click)="setReservedSeats(seat)"
+        [ngStyle]="{'background-color':(reservedSeats==seat)?'#12193d':''}"
+      >
+      {{ seat }}
+      </button>
+    </div>
+    <div class="modal-footer">
+         <button
+            type="button"
+            routerLink="/theatre/{{choosenShow.id}}"
+            (click)="activateShow(choosenShow)"
+            class="btn btn-outline-success"
+            style="width:200px;border-radius:0px;height:70px;font-size:30px;font-weight:bold;"
+         >
+           Continue
+        </button>
+    </div>
+</ng-template>
 
 

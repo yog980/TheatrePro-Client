@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { MovieResponse } from 'src/app/movie/model/MovieResponse';
+import { MovieService } from 'src/app/movie/movie.service';
 
 @Component({
   selector: 'app-carousel',
@@ -8,16 +10,19 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 })
 export class CarouselComponent implements OnInit {
 
-  constructor() { }
+  trendingMovies: MovieResponse[] = [];
+
+  constructor(private movieService:MovieService) { }
 
   ngOnInit(): void {
+    this.getAllTreadingMovies();
   }
 
 	images = [
-  `https://img.ticketnew.com/tn/offer_banner/Ps2_imax/1920_400.jpg`,
-  `https://img.ticketnew.com/tn/offer_banner/Virupaksha/1920_400.jpg`,
-  `https://img.ticketnew.com/tn/offer_banner/Kbkj/1920_400.jpg`,
-  `https://img.ticketnew.com/tn/offer_banner/Agent/1920_400.jpg`
+  `../../assets/banner1.jpg`,
+  `../../assets/banner2.jpg`,
+  `../../assets/banner3.jpg`,
+  `../../assets/banner4.jpg`,
 ];
 
 	paused = false;
@@ -49,4 +54,13 @@ export class CarouselComponent implements OnInit {
 			this.togglePaused();
 		}
 	}
+
+  // using movie service
+  getAllTreadingMovies() {
+    this.movieService.getAllTrendingMovies().subscribe((data) => {
+      this.trendingMovies = data;
+    },error1 => {
+      console.log(error1);
+    })
+  }
 }

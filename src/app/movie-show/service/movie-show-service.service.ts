@@ -22,3 +22,4 @@ export class MovieShowServiceService {
     return this.http.get<MovieShowResponse[]>(`${environment.apiUrl}/api/movie/${movieId}/movie-show`);
   }
 }
+ 

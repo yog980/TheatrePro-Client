@@ -7,5 +7,7 @@ export interface MovieResponse {
   status: Status,
   image: String,
   releaseDate: String,
-  duration: String
+  duration: String,
+  isTrending: boolean,
+  bannerImage: string
 }

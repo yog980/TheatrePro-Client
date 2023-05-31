@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'movie-show/:id',component: MovieShowComponent},
   {path: 'theatre1',component: Theatre1Component},
   {path: 'theatre2',component: Theatre2Component},
-  {path: 'theatre',component: MovieTheatreComponent}
+  {path: 'theatre/:showId',component: MovieTheatreComponent}
 ];
 
 
