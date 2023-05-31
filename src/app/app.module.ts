@@ -24,6 +24,9 @@ import { MovieShowComponent } from './movie-show/movie-show.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieTheatreComponent } from './movie-theatre/movie-theatre.component';
 
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './core/modal/modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,8 @@ import { MovieTheatreComponent } from './movie-theatre/movie-theatre.component';
     MovieComponent,
     MovieShowComponent,
     MovieDetailsComponent,
-    MovieTheatreComponent
+    MovieTheatreComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { MovieTheatreComponent } from './movie-theatre/movie-theatre.component';
     FontAwesomeModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

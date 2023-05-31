@@ -7,13 +7,13 @@
 	(slide)="onSlide($event)"
   class="banner"
 >
-    <ng-template ngbSlide *ngFor="let img of images; index as i">
+    <ng-template ngbSlide *ngFor="let movie of trendingMovies; index as i">
       <div class="carousel-caption">
-        <h3>My slide {{i + 1}} title</h3>
+        <h3>{{ movie.title }}</h3>
       </div>
-      <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+      <a routerLink="/movie-details" target="_blank" rel="nofollow noopener noreferrer">
         <div class="picsum-img-wrapper">
-          <img [src]="img" alt="My image {{i + 1}} description" height="400px" width="100%" />
+          <img src="{{'data:image/jpg;base64,' + movie.bannerImage}}" alt="" height="450px" width="100%" />
         </div>
       </a>
     </ng-template>

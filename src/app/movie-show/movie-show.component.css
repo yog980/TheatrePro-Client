@@ -14,3 +14,37 @@
   font-weight: bold;
   margin: 30px    ;
 }
+
+
+/* modal css */
+.custom-header {
+  background-color: rgb(212, 212, 212);
+  font-size: 50px;
+}
+
+.custom-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 8rem;
+}
+ .custom-body button {
+  font-size: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+ }
+
+ .custom-body button:hover {
+  background-color: brown;
+ }
+
+ a{
+  text-decoration: none;
+ }
+
+ a:active {
+  background-color: green;
+
+ }
+
+

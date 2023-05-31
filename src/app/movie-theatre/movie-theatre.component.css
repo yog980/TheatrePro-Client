@@ -32,3 +32,11 @@
   padding: 40px 0;
   color: white;
 }
+.overlay {
+  position: relative;
+  top:45px;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+
