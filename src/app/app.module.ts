@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './layouts/carousel/carousel.component';
-import { MoviesComponent } from './layouts/movies/movies.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -32,13 +31,11 @@ import { ModalComponent } from './core/modal/modal.component';
     AppComponent,
     HeaderComponent,
     CarouselComponent,
-    MoviesComponent,
     FooterComponent,
     LoginComponent,
     Theatre1Component,
     Theatre2Component,
     HomeComponent,
-    MoviesComponent,
     MovieComponent,
     MovieShowComponent,
     MovieDetailsComponent,

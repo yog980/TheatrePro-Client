@@ -13,7 +13,7 @@ import { MovieTheatreComponent } from './movie-theatre/movie-theatre.component';
 const routes: Routes = [
   {path: '',component: HomeComponent},
   {path: 'movies',component: MovieComponent},
-  {path: 'movie-details',component: MovieDetailsComponent},
+  {path: 'movie-details/:id',component: MovieDetailsComponent},
   {path: 'movie-show/:id',component: MovieShowComponent},
   {path: 'theatre1',component: Theatre1Component},
   {path: 'theatre2',component: Theatre2Component},

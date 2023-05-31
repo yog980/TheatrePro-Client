@@ -25,4 +25,8 @@ export class MovieService {
   getAllTrendingMovies(): Observable<MovieResponse[]> {
     return this.http.get<MovieResponse[]>(`${environment.apiUrl}/api/movie/movies/trending`);
   }
+
+  getMovieById(movieId: number): Observable<MovieResponse> {
+    return this.http.get<MovieResponse>(`${environment.apiUrl}/api/movie/${movieId}/movie`);
+  }
 }
