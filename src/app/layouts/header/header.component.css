@@ -70,3 +70,41 @@
 }
 
 .nav-items a.active { color: #F97924 }
+
+.forgot-pwd{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding-left: 0px;
+}
+form {
+  font-size: 20px;
+}
+
+input {
+  height: 50px;
+  width: 80%;
+  margin: auto;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.form-label {
+  font-size: 40px;
+  font-weight: bold;
+
+}
+
+.form-input {
+  height: fit-content;
+  font-size: 50px;
+}
+
+.form-fields {
+width:80%;
+margin: auto;
+}
+

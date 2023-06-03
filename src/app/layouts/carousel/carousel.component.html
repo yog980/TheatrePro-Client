@@ -9,11 +9,11 @@
 >
     <ng-template ngbSlide *ngFor="let movie of trendingMovies; index as i">
       <div class="carousel-caption">
-        <h3>{{ movie.title }}</h3>
+        <h3 style="color:rgb(236, 236, 236);font-weight:bold;font-size:50px;">{{ movie.title }}</h3>
       </div>
-      <a routerLink="/movie-details" target="_blank" rel="nofollow noopener noreferrer">
+      <a routerLink="/movie-details/{{ movie.id }}" target="_blank" rel="nofollow noopener noreferrer">
         <div class="picsum-img-wrapper">
-          <img src="{{'data:image/jpg;base64,' + movie.bannerImage}}" alt="" height="450px" width="100%" />
+          <img src="{{'data:image/jpg;base64,' + movie.bannerImage}}" alt="" height="550px" width="100%" />
         </div>
       </a>
     </ng-template>

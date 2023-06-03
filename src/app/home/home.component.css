@@ -1,0 +1,25 @@
+.home-section {
+  width: 100%;
+  margin:auto;
+  padding-top: 300px;
+  height: 700px;
+  background-color: rgb(206, 206, 206);
+}
+
+.movie-button {
+  text-align: center;
+ }
+
+ .movie-button button {
+   width: 260px;
+   border-radius: 0px;
+   font-weight: bold;
+ }
+
+ .dialogue {
+  font-size: 50px;
+  color: rgb(44, 44, 43);
+  width: 80%;
+  margin: auto;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ }

@@ -1,0 +1,21 @@
+thead
+{
+  background-color: rgb(68, 68, 204);
+}
+
+.form-label {
+  font-size: 40px;
+  font-weight: bold;
+
+}
+
+.form-input {
+  height: fit-content;
+  font-size: 50px;
+}
+
+.form-fields {
+width:100%;
+margin: auto;
+}
+

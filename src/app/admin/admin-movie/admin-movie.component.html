@@ -1,0 +1,141 @@
+<div>
+  <div class="alert alert-primary" role="alert">
+    This is a primary alert—check it out!
+  </div>
+  <button type="button"
+  class="btn btn-outline-success pull-right"
+  style="font-size: 30px;font-weight:bold;margin-bottom:20px;"
+  (click)="openVerticallyCentered(movieAdd)"
+  >
+  <i class="bi bi-plus-lg"></i> ADD MOVIE</button>
+</div>
+<table class="table table-striped" style="font-size: 30px;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies;let i = index">
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{ movie.title }}</td>
+      <td>
+        <img src="{{'data:image/jpg;base64,' + movie.image}}" width="100px" height="150px">
+      </td>
+      <td>{{ movie.description }}</td>
+      <td>{{ movie.releaseDate }}</td>
+      <td>{{ movie.duration }}</td>
+      <td>
+        <a style="margin:20px;color:green"><i class="bi bi-pencil-square" (click)="openVerticallyCentered(movieUpdate)"></i></a>
+        <a style="margin:20px;color:green" routerLink="/admin/movie-shows/{{ movie.id }}"><i class="bi bi-eye"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- add movie modal form -->
+<ng-template #movieAdd let-modal>
+	<div class="modal-header" style="background-color: rgb(27, 35, 78);color:aliceblue;">
+		<h1 class="modal-title" style="font-size: 50px;font-weight:bold;width:55%;text-align:right;">Add New Movie</h1>
+		<button type="button" class="btn-close btn-close-white" style="font-size: 50px;" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body" style="height: auto;">
+		<form class="form-fields" [formGroup]="movieAddForm" (ngSubmit)="submitAddForm()">
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputTilte" class="col-sm-3 col-form-label form-label">Title</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-input" formControlName="title" id="inputTilte" placeholder="title">
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputImage" class="col-sm-3 col-form-label form-label">Upload Image</label>
+        <div class="col-sm-9">
+          <input type="file" class="form-control form-input" (change)="uploadFile($event)" formControlName="image" id="inputImage" placeholder="file">
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputDesc" class="col-sm-3 col-form-label form-label">Description</label>
+        <div class="col-sm-9">
+          <textarea class="form-control form-input" formControlName="description" id="inputDesc">
+          </textarea>
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputReleaseDate" class="col-sm-3 col-form-label form-label">Release Date</label>
+        <div class="col-sm-9">
+          <input type="date" style="font-size:50px;" class="form-control form-input" formControlName="releaseDate" id="inputReleaseDate" placeholder="description">
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputDuration" class="col-sm-3 col-form-label form-label">Duration</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-input" id="inputDuration" formControlName="duration" placeholder="duration">
+        </div>
+      </div>
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <button type="submit" class="btn btn-primary"  style="font-weight: bold;font-size:40px;">Submit</button>
+      </div>
+    </form>
+	</div>
+</ng-template>
+
+
+<!-- update movie modal form -->
+<ng-template #movieUpdate let-modal>
+	<div class="modal-header" style="background-color: rgb(27, 35, 78);color:aliceblue;">
+		<h1 class="modal-title" style="font-size: 50px;font-weight:bold;width:55%;text-align:right;">Update Movie</h1>
+		<button type="button" class="btn-close btn-close-white" style="font-size: 50px;" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body" style="height: auto;">
+		<form class="form-fields" [formGroup]="movieAddForm" (ngSubmit)="submitAddForm()">
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputTilte" class="col-sm-3 col-form-label form-label">Title</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-input" formControlName="title" id="inputTilte" placeholder="title">
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputImage" class="col-sm-3 col-form-label form-label">Upload Image</label>
+        <div class="col-sm-9">
+          <input type="file" class="form-control form-input" (change)="uploadFile($event)" formControlName="image" id="inputImage" placeholder="file">
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputDesc" class="col-sm-3 col-form-label form-label">Description</label>
+        <div class="col-sm-9">
+          <textarea class="form-control form-input" formControlName="description" id="inputDesc">
+          </textarea>
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputReleaseDate" class="col-sm-3 col-form-label form-label">Release Date</label>
+        <div class="col-sm-9">
+          <input type="date" style="font-size:50px;" class="form-control form-input" formControlName="releaseDate" id="inputReleaseDate" placeholder="description">
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <label for="inputDuration" class="col-sm-3 col-form-label form-label">Duration</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-input" id="inputDuration" formControlName="duration" placeholder="duration">
+        </div>
+      </div>
+      <div class="form-group row" style="margin: 10px auto 20px auto">
+        <button type="submit" class="btn btn-primary"  style="font-weight: bold;font-size:40px;">Update</button>
+      </div>
+    </form>
+	</div>
+</ng-template>
