@@ -13,6 +13,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { Theatre1Component } from './theatre/theatre1/theatre1.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Theatre2Component } from './theatre/theatre2/theatre2.component';
+import { Theatre3Component } from './theatre/theatre3/theatre3.component';
+import { Theatre4Component } from './theatre/theatre4/theatre4.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
@@ -38,6 +40,8 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
     LoginComponent,
     Theatre1Component,
     Theatre2Component,
+    Theatre3Component,
+    Theatre4Component,
     HomeComponent,
     MovieComponent,
     MovieShowComponent,

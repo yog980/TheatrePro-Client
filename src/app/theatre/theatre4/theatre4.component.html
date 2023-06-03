@@ -1,0 +1,44 @@
+<div class="screen">
+  SCREEN
+</div>
+<!-- <div class="grid-container">
+  <ng-container *ngFor="let seat of seats;let myIndex = index;">
+      <div [ngStyle]="{'margin-right': smallMargins.includes(myIndex)?'60px':'auto'}">
+        <button class="grid-item"
+        [disabled]="disabled.includes(myIndex)"
+        [hidden]="disabled.includes(myIndex)"
+        >
+          <span
+            *ngIf="myIndex%23 != 0"
+            class="material-symbols-outlined"
+            style="color:aquamarine"
+            [style.color]="(myIndex < 92)?'red':(myIndex < 184)?'blue':'orange'"
+          >
+            chair
+          </span>
+        </button>
+      </div>
+    </ng-container>
+</div> -->
+<div style="width:30%;margin:auto;" *ngFor="let seats of seatArray;let i = index;">
+  <div
+   class="seat-row"
+    [ngStyle]="{'width':(i%2!=0)?'90%':'100%'}"
+  >
+    <div *ngFor="let seat of seats;">
+      <div *ngIf="!disabled.includes(seat)">
+        <span *ngIf="leftSeats.includes(seat) || rightSeats.includes(seat)">
+          {{ leftSeats.includes(seat)?alphabet[leftSeats.indexOf(seat)]:alphabet[rightSeats.indexOf(seat)] }}
+        </span>
+        <button class="seat-button" *ngIf="!leftSeats.includes(seat) && !rightSeats.includes(seat)">
+          <span
+              class="material-symbols-outlined"
+              style="color:aquamarine"
+            >
+              chair
+            </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

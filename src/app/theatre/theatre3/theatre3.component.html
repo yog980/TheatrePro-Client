@@ -1,0 +1,21 @@
+<div class="screen">
+  SCREEN
+</div>
+<div id="page-wrap">
+  <div class="badge" *ngFor="let row of seatArrays;let arrIndex = index;">
+    <h1>
+        <span class="char{{ i+1 }}" *ngFor="let seat of row;let i = index">
+          <span *ngIf="leftSeats.includes(seat) || rightSeats.includes(seat)">
+            {{ leftSeats.includes(seat)?alphabet[leftSeats.indexOf(seat)]:alphabet[rightSeats.indexOf(seat)] }}
+          </span>
+          <button
+          *ngIf="!leftSeats.includes(seat) && !rightSeats.includes(seat) && !disabled.includes(seat)"
+          class="seat-button"
+          >
+            <img src=".././assets/chair.png" width="20px">
+          </button>
+
+        </span>
+    </h1>
+  </div>
+</div>
