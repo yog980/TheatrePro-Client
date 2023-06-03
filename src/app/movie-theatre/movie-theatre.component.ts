@@ -42,6 +42,7 @@ export class MovieTheatreComponent implements OnInit {
     this.getRightNumbering();
     this.showId = this.route.snapshot.params['showId'];
     this.getAllSeatsByShowId(this.showId);
+    this.getMovieShowByShowId(this.showId);
   }
 
   getLeftNumbering(): void {
@@ -68,6 +69,14 @@ export class MovieTheatreComponent implements OnInit {
     },error1 => {
       console.log(error1);
     })
+  }
+
+  getMovieShowByShowId(id: number) {
+    this.movieShowService.getMovieShowById(id).subscribe((data) => {
+      this.movieTheatre = data;
+    },error1 => {
+      console.log(error1);
+    });
   }
 
 

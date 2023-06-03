@@ -21,5 +21,8 @@ export class MovieShowServiceService {
   getMovieShowsByMovieId(movieId: number): Observable<MovieShowResponse[]> {
     return this.http.get<MovieShowResponse[]>(`${environment.apiUrl}/api/movie/${movieId}/movie-show`);
   }
+
+  getMovieShowById(id: number): Observable<MovieShowResponse> {
+    return this.http.get<MovieShowResponse>(`${environment.apiUrl}/api/movie/${id}/show`);
+  }
 }
- 
