@@ -1,21 +1,103 @@
-<div class="screen">
-  SCREEN
-</div>
-<div id="page-wrap">
-  <div class="badge" *ngFor="let rowSeats of seatArrays;let arrIndex = index;">
-    <h1>
-        <span class="char{{ i+1 }}" *ngFor="let seat of rowSeats;let i = index">
-          <span *ngIf="leftSeats.includes(seats.indexOf(seat)) || rightSeats.includes(seats.indexOf(seat))">
-            {{ leftSeats.includes(seats.indexOf(seat))?alphabet[leftSeats.indexOf(seats.indexOf(seat))]:alphabet[rightSeats.indexOf(seats.indexOf(seat))] }}
-          </span>
-          <button
-          *ngIf="!leftSeats.includes(seats.indexOf(seat)) && !rightSeats.includes(seats.indexOf(seat)) && !disabled.includes(seats.indexOf(seat))"
-          class="seat-button"
-          >
-            <img src=".././assets/chair.png" width="20px">
-          </button>
+<div style="display: flex;flex-direction:row;justify-content:space-between;margin-bottom:100px;">
+  <div style="width:20%;padding:40px;font-size:30px;font-weight:bold;margin-top:300px;">
+    <tr>
+      <td>Blank Seats</td>
+      <td>
+        <span
+                    class="material-symbols-outlined"
+                  >
+                    chair
+                  </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Selected Seats</td>
+      <td style="color:rgb(38, 0, 255);">
+        <span
+        class="material-symbols-outlined"
+      >
+        chair
+      </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Reserved Seats</td>
+      <td style="color:red;">
+        <span
+        class="material-symbols-outlined"
+      >
+        chair
+      </span>
+      </td>
+    </tr>
+  </div>
+  <div style="width:40%">
+    <div class="alert alert-{{ alertType }}" role="alert" *ngIf="hasAlert" style="font-size:40px;font-weight:bold;">
+      {{ message }}
+    </div>
+    <div class="screen">
+      SCREEN
+    </div>
+    <div id="page-wrap">
+      <div class="badge" *ngFor="let rowSeats of seatArrays;let arrIndex = index;">
+        <h1>
+            <span class="char{{ i+1 }}" *ngFor="let seat of rowSeats;let i = index">
+              <span *ngIf="leftSeats.includes(seats.indexOf(seat)) || rightSeats.includes(seats.indexOf(seat))">
+                {{ leftSeats.includes(seats.indexOf(seat))?alphabet[leftSeats.indexOf(seats.indexOf(seat))]:alphabet[rightSeats.indexOf(seats.indexOf(seat))] }}
+              </span>
+              <button
+              class="seat-button"
+              (click)="selectSeat(seat)"
+              (dblclick)="reverseSelectedSeats()"
+              *ngIf="!leftSeats.includes(seats.indexOf(seat)) && !rightSeats.includes(seats.indexOf(seat)) && !disabled.includes(seats.indexOf(seat))"
+              [ngStyle]="{'background-color':selectedIndex.includes(seats.indexOf(seat))?'blue':''}"
+              [disabled]="seat.booked"
+              >
+                <img src=".././assets/chair.png" width="20px">
+              </button>
 
-        </span>
-    </h1>
+            </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div style="width:20%;margin-top:100px;">
+    <div class="card" style="width:90%;font-size:30px;" *ngIf="hasSeatsSelected">
+      <div class="card-header" style="color:green;font-weight:bold;font-size:40px;text-align:center;">Proceed Payment</div>
+      <div class="card-body">
+        <tr>
+          <td>Seats Selected</td>
+          <td>{{ selectedIndex.length }}</td>
+        </tr>
+        <tr>
+          <td>Price Per Seat</td>
+          <td>£{{ showDetails.pricePerTicket }}</td>
+        </tr>
+        <tr>
+          <td>Total Price</td>
+          <td>£{{ showDetails.pricePerTicket * selectedIndex.length| number : '1.2-2' }}</td>
+        </tr>
+        <tr>
+          <td>Discount Price</td>
+          <td style="color:red;">£{{ (showDetails.pricePerTicket * selectedIndex.length)*(showDetails.discountPercentage/100) | number : '1.2-2' }}</td>
+        </tr>
+        <tr>
+          <td>Payment Amount</td>
+          <td style="color:rgb(11, 131, 17);font-weight:bold;">£{{ (showDetails.pricePerTicket * selectedIndex.length) - (showDetails.pricePerTicket * selectedIndex.length)*(showDetails.discountPercentage/100) | number : '1.2-2' }}</td>
+        </tr>
+        <tr>
+          <td>Pay With:</td>
+          <td>
+            <button>Pay Pal</button>
+            <button>G Pay</button>
+          </td>
+        </tr>
+
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-success" style="width: 100%;font-size:30px;font-weight:bold;" (click)="confirmBooking()">Checkout</button>
+      </div>
+    </div>
   </div>
 </div>
+

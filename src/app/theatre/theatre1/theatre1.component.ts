@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { UserServiceService } from 'src/app/admin/admin-user/user-service.service';
 import { MovieShowResponse } from 'src/app/movie-show/model/movie-show-response.model';
 import { MovieShowServiceService } from 'src/app/movie-show/service/movie-show-service.service';
@@ -39,6 +39,9 @@ export class Theatre1Component implements OnInit {
   bookingArr: number[] = [];
 
   seatResponse: SeatResponse[] = [];
+
+  //updating seats
+  @Output() seatsUpdateEvent = new EventEmitter<number>();
 
   constructor
   (
@@ -110,6 +113,10 @@ export class Theatre1Component implements OnInit {
       window.location.reload();
     })
 
+  }
+
+  setSeatsUpdate() {
+    this.seatsUpdateEvent.emit(this.showDetails.id);
   }
 
 }

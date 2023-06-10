@@ -55,13 +55,15 @@ export class MovieTheatreComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSelectedMovieShow();
-   
+
     this.showId = this.route.snapshot.params['showId'];
     this.getAllSeatsByShowId(this.showId);
     this.getMovieShowByShowId(this.showId);
   }
 
-
+  updateSeatsResponse(showId: number) {
+    this.getAllSeatsByShowId(showId);
+  }
 
   getSelectedMovieShow() {
     this.movieShowService.choosenShow.subscribe((data) => {

@@ -1,10 +1,10 @@
 <div *ngIf="movieTheatre.theatre.title === 'Theatre1'">
-  <app-theatre1 [seats]="seatResponse" [showDetails]="movieTheatre"></app-theatre1>
+  <app-theatre1 [seats]="seatResponse" [showDetails]="movieTheatre" (seatsUpdateEvent)="updateSeatsResponse($event)"></app-theatre1>
 </div>
 
 <div *ngIf="movieTheatre.theatre.title === 'Theatre2'">
 
-    <app-theatre3 [seats]="seatResponse" ></app-theatre3>
+    <app-theatre3 [seats]="seatResponse"  [showDetails]="movieTheatre"></app-theatre3>
 </div>
 
 <div *ngIf="movieTheatre.theatre.title === 'Theatre3'">
