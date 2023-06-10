@@ -1,12 +1,13 @@
 .grid-container {
   margin: auto;
-  width: 50%;
+  width: 100%;
   display: grid;
   /* column-gap: 50px; */
   grid-template-columns: repeat(23,auto);
   background-color: #fcfcfc;
   /* transform: rotateY(-40deg); */
   /* padding: 10px; */
+  margin-bottom: 100px;
 }
 .grid-item {
 
@@ -22,7 +23,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 100px;
-  width: 30%;
+  width: 100%;
   height: 200px;
   background-color: rgb(117, 115, 115);
   border: 20px solid rgb(49, 48, 48);

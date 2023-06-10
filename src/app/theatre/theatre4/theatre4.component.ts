@@ -68,14 +68,8 @@ export class Theatre4Component implements OnInit {
       this.bookingArr.push(this.seats[index+i].seatId);
       this.selectedIndex.push(index+i);
     }
-    // if (!prevSeat.booked) {
-    //   alert("You cannot leave bare seat at the corner");
-    // }
-
-
     this.backupReservedSeats = this.reservedSeats;
     this.setReservedSeats(0);
-
     this.hasSeatsSelected = true;
   }
 
@@ -95,7 +89,7 @@ export class Theatre4Component implements OnInit {
     };
     this.userService.bookSeats(data).subscribe(response => {
       this.alertType = 'success';
-      this.message = 'Movie added successfully';
+      this.message = 'Seats Booked successfully';
       this.updateAlert();
       window.location.reload();
     })

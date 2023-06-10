@@ -1,18 +1,107 @@
-<div class="screen">
-  SCREEN
-</div>
-<div class="grid-container">
-  <div  *ngFor="let seat of seats;let myIndex = index">
-    <button class="grid-item"
-    [disabled]="disabled.includes(myIndex)"
-    [hidden]="disabled.includes(myIndex)"
-    >
-    <span *ngIf="myIndex%23 == 0">
-      {{ alphabet[myIndex/23] }}
-    </span>
-      <span *ngIf="myIndex%23 != 0" class="material-symbols-outlined" style="color:aquamarine" [style.color]="(myIndex < 92)?'red':(myIndex < 184)?'blue':'orange'">
+<div style="display: flex;flex-direction:row;justify-content:space-between;">
+  <div style="width:20%;padding:40px;font-size:30px;font-weight:bold;margin-top:300px;">
+    <tr>
+      <td>Blank Seats</td>
+      <td>
+        <span
+                    class="material-symbols-outlined"
+                  >
+                    chair
+                  </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Selected Seats</td>
+      <td style="color:rgb(38, 0, 255);">
+        <span
+        class="material-symbols-outlined"
+      >
         chair
-        </span>
-    </button>
+      </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Reserved Seats</td>
+      <td style="color:red;">
+        <span
+        class="material-symbols-outlined"
+      >
+        chair
+      </span>
+      </td>
+    </tr>
   </div>
+  <div style="width:40%;">
+    <div class="alert alert-{{ alertType }}" role="alert" *ngIf="hasAlert" style="font-size:40px;font-weight:bold;">
+      {{ message }}
+    </div>
+    <div class="screen">
+      SCREEN
+    </div>
+    <div class="grid-container">
+      <div  *ngFor="let seat of seats;let myIndex = index">
+        <span
+        *ngIf="leftSeats.includes(myIndex) || rightSeats.includes(myIndex)"
+        style="font-weight:bold;margin:20px;"
+        >
+        {{ leftSeats.includes(myIndex)?alphabet[leftSeats.indexOf(myIndex)]:alphabet[rightSeats.indexOf(myIndex)] }}
+      </span>
+        <button
+            class="grid-item seat-button"
+            [disabled]="disabled.includes(myIndex)"
+            [hidden]="disabled.includes(myIndex)"
+            *ngIf="!leftSeats.includes(myIndex) && !rightSeats.includes(myIndex)"
+            [ngStyle]="{'color':selectedIndex.includes(seats.indexOf(seat))?'blue':''}"
+            [disabled]="seat.booked"
+            (click)="selectSeat(seat)"
+            (dblclick)="reverseSelectedSeats()"
+        >
+        <span
+          class="material-symbols-outlined"
+        >
+            chair
+      </span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+<div style="width:20%;margin-top:100px;">
+  <div class="card" style="width:90%;font-size:30px;" *ngIf="hasSeatsSelected">
+    <div class="card-header" style="color:green;font-weight:bold;font-size:40px;text-align:center;">Proceed Payment</div>
+    <div class="card-body">
+      <tr>
+        <td>Seats Selected</td>
+        <td>{{ selectedIndex.length }}</td>
+      </tr>
+      <tr>
+        <td>Price Per Seat</td>
+        <td>£{{ showDetails.pricePerTicket }}</td>
+      </tr>
+      <tr>
+        <td>Total Price</td>
+        <td>£{{ showDetails.pricePerTicket * selectedIndex.length| number : '1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td>Discount Price</td>
+        <td style="color:red;">£{{ (showDetails.pricePerTicket * selectedIndex.length)*(showDetails.discountPercentage/100) | number : '1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td>Payment Amount</td>
+        <td style="color:rgb(11, 131, 17);font-weight:bold;">£{{ (showDetails.pricePerTicket * selectedIndex.length) - (showDetails.pricePerTicket * selectedIndex.length)*(showDetails.discountPercentage/100) | number : '1.2-2' }}</td>
+      </tr>
+      <tr>
+        <td>Pay With:</td>
+        <td>
+          <button>Pay Pal</button>
+          <button>G Pay</button>
+        </td>
+      </tr>
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-success" style="width: 100%;font-size:30px;font-weight:bold;" (click)="confirmBooking()">Checkout</button>
+    </div>
+  </div>
+</div>
 </div>

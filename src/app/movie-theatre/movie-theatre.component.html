@@ -1,32 +1,5 @@
 <div *ngIf="movieTheatre.theatre.title === 'Theatre1'">
-  <div class="screen">
-    SCREEN
-  </div>
-  <div class="grid-container">
-    <div  *ngFor="let seat of seatResponse;let myIndex = index">
-      <span
-      *ngIf="leftSeats.includes(myIndex) || rightSeats.includes(myIndex)"
-      style="font-weight:bold;margin:20px;"
-      >
-      {{ leftSeats.includes(myIndex)?alphabet[leftSeats.indexOf(myIndex)]:alphabet[rightSeats.indexOf(myIndex)] }}
-    </span>
-      <button
-          class="grid-item"
-          [disabled]="disabled.includes(myIndex)"
-          [hidden]="disabled.includes(myIndex)"
-          *ngIf="!leftSeats.includes(myIndex) && !rightSeats.includes(myIndex)"
-      >
-      <span
-        class="material-symbols-outlined"
-        style="color:aquamarine;"
-        [style.color]="(myIndex < 92)?'red':(myIndex < 184)?'blue':'orange'"
-      >
-          chair
-    </span>
-
-      </button>
-    </div>
-  </div>
+  <app-theatre1 [seats]="seatResponse" [showDetails]="movieTheatre"></app-theatre1>
 </div>
 
 <div *ngIf="movieTheatre.theatre.title === 'Theatre2'">

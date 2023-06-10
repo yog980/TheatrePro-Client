@@ -1,5 +1,5 @@
 import { SeatResponse } from './model/seat-response';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input, SimpleChanges } from '@angular/core';
 import { MovieShowServiceService } from '../movie-show/service/movie-show-service.service';
 import { MovieShowResponse } from '../movie-show/model/movie-show-response.model';
 import { MovieTheatreServiceService } from './movie-theatre-service.service';
@@ -24,6 +24,23 @@ export class MovieTheatreComponent implements OnInit {
   checkImage: string = '../assets/check.png';
 
 
+  alertType: string = '';
+  message: string = '';
+  hasAlert: boolean = false;
+
+
+  selectedSeat: SeatResponse[] = [];
+  reservedSeats: number = 1;
+  selectedIndex: number[] = [];
+  hasSeatsSelected: boolean = false;
+  backupReservedSeats: number = 1;
+  bookingArr: number[] = [];
+  rows: number[] = [...new Array(11)];
+
+
+  @Input() showDetails: MovieShowResponse = {} as MovieShowResponse;
+
+
 
   movieTheatre: MovieShowResponse = {} as MovieShowResponse;
 
@@ -38,24 +55,13 @@ export class MovieTheatreComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSelectedMovieShow();
-    this.getLeftNumbering();
-    this.getRightNumbering();
+   
     this.showId = this.route.snapshot.params['showId'];
     this.getAllSeatsByShowId(this.showId);
     this.getMovieShowByShowId(this.showId);
   }
 
-  getLeftNumbering(): void {
-    for(let i = 1;i<13;i++) {
-      this.leftSeats.push(23*i);
-    }
-  }
 
-  getRightNumbering(): void {
-    for(let i = 1;i<13;i++) {
-      this.rightSeats.push(45+(23*(i-1)));
-    }
-  }
 
   getSelectedMovieShow() {
     this.movieShowService.choosenShow.subscribe((data) => {
@@ -78,8 +84,4 @@ export class MovieTheatreComponent implements OnInit {
       console.log(error1);
     });
   }
-
-
-
-
 }
