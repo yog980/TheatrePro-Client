@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AdminMovieComponent implements OnInit {
   movieAddForm: FormGroup = {} as FormGroup;
   message: string = '';
+  alertType: string = '';
+  hasAlert: boolean = false;
 
   movies: MovieResponse[] = [];
   constructor(
@@ -32,6 +34,13 @@ export class AdminMovieComponent implements OnInit {
     });
   }
 
+  updateAlert() {
+    this.hasAlert = true;
+    setTimeout(() => {
+      this.hasAlert = false
+    },5000)
+  }
+
   uploadFile(event: any) {
     const file = event.target.files[0];
     this.movieAddForm.get('image')?.setValue(file);
@@ -45,11 +54,17 @@ export class AdminMovieComponent implements OnInit {
     formData.append('releaseDate',this.movieAddForm.get('releaseDate')?.value);
     formData.append('duration',this.movieAddForm.get('duration')?.value);
     this.movieService.addNewMovie(formData).subscribe((data) => {
-      this.message = data.message;
+      this.alertType = 'success';
+      this.message = 'Movie added successfully';
+      this.updateAlert();
       this.getAllMovies();
       this.modalService.dismissAll();
+      this.ngOnInit();
     },error => {
       console.log(error);
+      this.alertType = 'danger';
+      this.message = error;
+      this.updateAlert();
     });
   }
 

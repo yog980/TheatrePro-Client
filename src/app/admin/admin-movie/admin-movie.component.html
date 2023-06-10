@@ -1,6 +1,6 @@
 <div>
-  <div class="alert alert-primary" role="alert">
-    This is a primary alert—check it out!
+  <div class="alert alert-{{ alertType }}" role="alert" *ngIf="hasAlert">
+    {{ message }}
   </div>
   <button type="button"
   class="btn btn-outline-success pull-right"

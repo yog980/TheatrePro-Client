@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,SimpleChanges } from '@angular/core';
+import { SeatResponse } from 'src/app/movie-theatre/model/seat-response';
 
 @Component({
   selector: 'app-theatre3',
@@ -9,24 +10,26 @@ export class Theatre3Component implements OnInit {
   rows: number[] = [1,2,3,4,5,6,7,8];
   disabled: number[] = [0,1,2,20,21,22,23,24,44,45,46,47,67,68,69,91,92,114];
   alphabet: string[] = ['A','B','C','D','E','F','G','H','I','J','K','L','M'];
-  seats: number[] = [...new Array(184)];
-  seatArrays: number[][] = [
-    [],[],[],[],[],[],[],[]];
-    leftSeats: number[] = [3,25,48,70,93,115,138,161];
-    rightSeats: number[] = [19,43,66,90,113,137,160,183];
+  @Input() seats: SeatResponse[] = [...new Array(184)];
+  seatArrays: SeatResponse[][] = [[],[],[],[],[],[],[],[]];
+  leftSeats: number[] = [3,25,48,70,93,115,138,161];
+  rightSeats: number[] = [19,43,66,90,113,137,160,183];
 
 
 
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
     for (let r = 0; r < this.rows.length; r++) {
       for(let  i = 0; i < this.seats.length; i++) {
         if (i < (r+1)*23  && i >= r*23)
-        this.seatArrays[r].push(i);
+        this.seatArrays[r].push(this.seats[i]);
       }
     }
-    console.log(this.seatArrays);
   }
 
 }

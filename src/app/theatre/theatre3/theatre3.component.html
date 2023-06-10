@@ -2,14 +2,14 @@
   SCREEN
 </div>
 <div id="page-wrap">
-  <div class="badge" *ngFor="let row of seatArrays;let arrIndex = index;">
+  <div class="badge" *ngFor="let rowSeats of seatArrays;let arrIndex = index;">
     <h1>
-        <span class="char{{ i+1 }}" *ngFor="let seat of row;let i = index">
-          <span *ngIf="leftSeats.includes(seat) || rightSeats.includes(seat)">
-            {{ leftSeats.includes(seat)?alphabet[leftSeats.indexOf(seat)]:alphabet[rightSeats.indexOf(seat)] }}
+        <span class="char{{ i+1 }}" *ngFor="let seat of rowSeats;let i = index">
+          <span *ngIf="leftSeats.includes(seats.indexOf(seat)) || rightSeats.includes(seats.indexOf(seat))">
+            {{ leftSeats.includes(seats.indexOf(seat))?alphabet[leftSeats.indexOf(seats.indexOf(seat))]:alphabet[rightSeats.indexOf(seats.indexOf(seat))] }}
           </span>
           <button
-          *ngIf="!leftSeats.includes(seat) && !rightSeats.includes(seat) && !disabled.includes(seat)"
+          *ngIf="!leftSeats.includes(seats.indexOf(seat)) && !rightSeats.includes(seats.indexOf(seat)) && !disabled.includes(seats.indexOf(seat))"
           class="seat-button"
           >
             <img src=".././assets/chair.png" width="20px">

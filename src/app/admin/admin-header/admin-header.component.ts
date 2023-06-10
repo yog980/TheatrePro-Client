@@ -1,5 +1,5 @@
 import { MovieResponse } from './../../movie/model/MovieResponse';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { MovieService } from 'src/app/movie/movie.service';
 
 
@@ -9,6 +9,8 @@ import { MovieService } from 'src/app/movie/movie.service';
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent implements OnInit {
+
+  @Output() authenticationEvent = new EventEmitter<boolean>();
 
   displaySidebar: Boolean = true;
 
@@ -22,6 +24,12 @@ export class AdminHeaderComponent implements OnInit {
 
   setDisplayBar() {
     this.displaySidebar = !this.displaySidebar;
+  }
+
+
+  logout() {
+    console.log("Inside logout");
+    this.authenticationEvent.emit(false);
   }
 
 

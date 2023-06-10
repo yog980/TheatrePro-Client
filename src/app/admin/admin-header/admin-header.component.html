@@ -6,14 +6,14 @@
        </div>
 
       <div class="nav-items" style="margin-left: 50px;">
-        <a (click) = "setDisplayBar()" routerLinkActive="active" ariaCurrentWhenActive="page" style="font-size: 50px;">
+        <a (click) = "setDisplayBar()"  routerLinkActive="active" ariaCurrentWhenActive="page" style="font-size: 50px;">
           <i class="fa fa-bars"></i>
         </a>
       </div>
     </div>
     <div class="nav-items">
-      <a routerLinkActive="active" ariaCurrentWhenActive="page">
-        <i class="bi bi-box-arrow-left"></i>
+      <a routerLinkActive="active" ariaCurrentWhenActive="page" (click) = "logout()">
+        Logout
       </a>
     </div>
   </div>

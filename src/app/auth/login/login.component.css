@@ -14,3 +14,11 @@ input {
   width: 80%;
   margin: auto;
 }
+
+.login-form {
+  width: 40%;
+  margin: auto;
+  padding: 50px 20px 10px 10px;
+  border-radius: 10%;
+  background-color: rgb(200, 201, 199);
+}

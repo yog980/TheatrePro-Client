@@ -14,6 +14,13 @@ export class MovieShowServiceService {
   private _show: BehaviorSubject<MovieShowResponse> = new BehaviorSubject({} as MovieShowResponse);
   choosenShow: Observable<MovieShowResponse> = this._show.asObservable();
 
+  private reservedSeats: BehaviorSubject<number> = new BehaviorSubject(1);
+  getReservedSeats = this.reservedSeats.asObservable();
+
+  setReservedSeat(seats: number) {
+    this.reservedSeats.next(seats);
+  }
+
   activateShow(selectedShow: MovieShowResponse) {
     this._show.next(selectedShow);
   }

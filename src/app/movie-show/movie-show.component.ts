@@ -3,6 +3,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieShowServiceService } from './service/movie-show-service.service';
 import { ModalDismissReasons, NgbModal,NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-movie-show',
@@ -17,7 +18,11 @@ export class MovieShowComponent implements OnInit {
   closeResult = '';
   modalRef: NgbModalRef = {} as NgbModalRef;
   seatSelection: number[] = [1,2,3,4,5,6,7,8];
+
+
   reservedSeats: number = 1;
+
+
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +33,7 @@ export class MovieShowComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.findAllMovieShowByMovieId(this.id);
+    this.showService.getReservedSeats.subscribe((data) => this.reservedSeats = data);
   }
 
   findAllMovieShowByMovieId(id: number) {
@@ -63,9 +69,7 @@ export class MovieShowComponent implements OnInit {
 	}
 
   setReservedSeats(seats: number) {
-    this.reservedSeats = seats;
-    console.log(this.reservedSeats);
+    this.showService.setReservedSeat(seats);
   }
-
 
 }

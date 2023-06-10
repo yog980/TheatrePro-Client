@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'threatre-pro';
+
+  isAdmin: boolean = false;
+
+  hasAdmin(admin: boolean) {
+    this.isAdmin = admin;
+  }
+
+  logout(isAdmin: boolean) {
+    console.log("This works as well");
+    this.isAdmin = isAdmin;
+  }
 }

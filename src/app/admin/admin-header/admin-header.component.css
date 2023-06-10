@@ -36,6 +36,10 @@
   text-decoration: none;
 }
 
+.nav-items a:hover{
+  cursor: pointer;
+}
+
 .nav-items a.active { color: #F97924 }
 
 .forgot-pwd{

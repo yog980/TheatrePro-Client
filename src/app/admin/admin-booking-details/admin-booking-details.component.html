@@ -1,3 +1,39 @@
-<div>
-  <h1>Admin Booking Details</h1>
-</div>
+<table class="table table-striped" style="font-size: 30px;">
+  <thead>
+    <tr>
+      <!-- bookingId: number;
+  bookingStatus: string;
+  bookingDate: string;
+  discountPercentage: number;
+  shift: number;
+  startDate: string;
+  movieTitle: string;
+  theatre: string;
+  seatsBooked: number; -->
+      <th scope="col">#</th>
+      <th scope="col">Movie</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Theatre</th>
+      <th scope="col">Shift</th>
+      <th scope="col">Booking Date</th>
+      <th scope="col">Seats Booked</th>
+      <th scope="col">Discount Percentage</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let details of bookingDetails;let i = index">
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{ details.movieTitle }}</td>
+      <td>{{ details.startDate | date:'MMM d, y, h:mm a' }}</td>
+      <td>{{ details.theatre }}</td>
+      <td>{{ details.shift }}</td>
+      <td>{{ details.bookingDate | date:'MMM d, y, h:mm a' }}</td>
+      <td>{{ details.seatsBooked }}</td>
+      <td>{{ details.discountPercentage }}</td>
+      <td>
+        <a style="margin:20px;color: 'red'" ><i class="fa fa-trash"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

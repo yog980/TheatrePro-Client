@@ -30,7 +30,6 @@ import { AdminMovieComponent } from './admin/admin-movie/admin-movie.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AdminBookingDetailsComponent } from './admin/admin-booking-details/admin-booking-details.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +52,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
     AdminMovieComponent,
     AdminProfileComponent,
     AdminBookingDetailsComponent,
-    AdminUserComponent
+    AdminUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +64,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
     CommonModule,
     NgbModule,
     NgbDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

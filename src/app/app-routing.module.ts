@@ -14,6 +14,7 @@ import { AdminMovieShowComponent } from './admin/admin-movie-show/admin-movie-sh
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AdminBookingDetailsComponent } from './admin/admin-booking-details/admin-booking-details.component';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -30,6 +31,8 @@ const routes: Routes = [
   {path:'admin/profile',component:AdminProfileComponent},
   {path:'admin/booking-details',component:AdminBookingDetailsComponent},
   {path:'admin/users',component:AdminUserComponent},
+  {path:'admin/profile',component:AdminUserComponent},
+  {path:'admin/login',component:LoginComponent},
 ];
 
 

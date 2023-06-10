@@ -9,6 +9,7 @@ export interface MovieShowResponse {
   startTime: string;
   startDate: string;
   discountPercentage: number;
+  pricePerTicket: number;
   movie: MovieMiniResource;
   theatre: TheatreResponse;
   status: Status;

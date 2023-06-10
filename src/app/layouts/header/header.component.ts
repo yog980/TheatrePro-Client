@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,7 +8,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HeaderComponent implements OnInit {
   closeResult: string = '';
+  isAuthenticated: boolean = false;
 
+  @Output() adminEvent = new EventEmitter<boolean>();
+  hasAdminRole(isAdmin: boolean) {
+    this.adminEvent.emit(isAdmin);
+  }
 
   constructor(private modalService: NgbModal) {}
 
@@ -22,6 +27,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  toggleAuthenticate() {
+    this.isAuthenticated = !this.isAuthenticated;
+    this.hasAdminRole(true);
   }
 
 

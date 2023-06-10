@@ -20,7 +20,6 @@
         class="material-symbols-outlined"
         style="color:aquamarine;"
         [style.color]="(myIndex < 92)?'red':(myIndex < 184)?'blue':'orange'"
-        [ngStyle]="{'background':'url('+checkImage+') no-repeat center center','background-size': '80% 80%'}"
       >
           chair
     </span>
@@ -31,7 +30,10 @@
 </div>
 
 <div *ngIf="movieTheatre.theatre.title === 'Theatre2'">
-    <app-theatre3></app-theatre3></div>
+
+    <app-theatre3 [seats]="seatResponse" ></app-theatre3>
+</div>
 
 <div *ngIf="movieTheatre.theatre.title === 'Theatre3'">
-      <app-theatre4></app-theatre4></div>
+      <app-theatre4 [seats]="seatResponse" [showDetails]="movieTheatre"></app-theatre4>
+</div>

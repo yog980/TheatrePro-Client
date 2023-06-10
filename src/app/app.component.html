@@ -1,11 +1,19 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
-<!-- <div>
+
+<div *ngIf="!isAdmin;else admin">
+  <app-header (adminEvent)="hasAdmin($event)"></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+<ng-template #admin (authenticationEvent)="logout($event)">
   <app-admin-header>
   </app-admin-header>
-</div> -->
-
+</ng-template>
 
 
 <!-- <app-theatre4></app-theatre4> -->
+
+
+<!-- <router-outlet>
+  <app-login>
+  </app-login>
+</router-outlet> -->
