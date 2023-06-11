@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MovieResponse } from './../../movie/model/MovieResponse';
 import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { MovieService } from 'src/app/movie/movie.service';
@@ -14,7 +15,7 @@ export class AdminHeaderComponent implements OnInit {
 
   displaySidebar: Boolean = true;
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService,private router: Router) { }
 
   active = 1;
 
@@ -28,8 +29,8 @@ export class AdminHeaderComponent implements OnInit {
 
 
   logout() {
-    console.log("Inside logout");
     this.authenticationEvent.emit(false);
+    this.router.navigate(['/']);
   }
 
 

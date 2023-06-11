@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,7 +16,10 @@ export class HeaderComponent implements OnInit {
     this.adminEvent.emit(isAdmin);
   }
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private router: Router
+    ) {}
 
 	openVerticallyCentered(content:any) {
 		this.modalService.open(content, { centered: true ,size:'xl'});
@@ -32,6 +36,8 @@ export class HeaderComponent implements OnInit {
   toggleAuthenticate() {
     this.isAuthenticated = !this.isAuthenticated;
     this.hasAdminRole(true);
+    this.router.navigate(['/admin/profile']);
+    this.modalService.dismissAll();
   }
 
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'threatre-pro';
 
+  constructor(private router: Router) {}
+
   isAdmin: boolean = false;
 
   hasAdmin(admin: boolean) {
@@ -15,7 +18,8 @@ export class AppComponent {
   }
 
   logout(isAdmin: boolean) {
-    console.log("This works as well");
-    this.isAdmin = isAdmin;
+    console.log("This works as well",isAdmin);
+    this.isAdmin = false;
+    this.router.navigate(['/']);
   }
 }

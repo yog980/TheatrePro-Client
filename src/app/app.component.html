@@ -4,8 +4,8 @@
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
-<ng-template #admin (authenticationEvent)="logout($event)">
-  <app-admin-header>
+<ng-template #admin>
+  <app-admin-header (authenticationEvent)="logout($event)">
   </app-admin-header>
 </ng-template>
 <!-- <app-paypal></app-paypal> -->
