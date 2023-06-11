@@ -93,13 +93,12 @@
           <td>Payment Amount</td>
           <td style="color:rgb(11, 131, 17);font-weight:bold;">£{{ (showDetails.pricePerTicket * selectedIndex.length) - (showDetails.pricePerTicket * selectedIndex.length)*(showDetails.discountPercentage/100) | number : '1.2-2' }}</td>
         </tr>
-        <tr>
-          <td>Pay With:</td>
-          <td>
-            <button>Pay Pal</button>
-            <button>G Pay</button>
-          </td>
-        </tr>
+        <div class="card-header" style="text-align: center;font-weight:bold;">
+          Payment Options
+        </div>
+        <div>
+          <app-paypal></app-paypal>
+        </div>
 
       </div>
       <div class="card-footer">

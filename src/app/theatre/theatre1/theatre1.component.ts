@@ -40,6 +40,8 @@ export class Theatre1Component implements OnInit {
 
   seatResponse: SeatResponse[] = [];
 
+  paymentAmount: number = 0;
+
   //updating seats
   @Output() seatsUpdateEvent = new EventEmitter<number>();
 
@@ -90,6 +92,7 @@ export class Theatre1Component implements OnInit {
     this.backupReservedSeats = this.reservedSeats;
     this.setReservedSeats(0);
     this.hasSeatsSelected = true;
+    this.calculatePaymentAmount();
   }
 
   setReservedSeats(seats: number) {
@@ -99,6 +102,7 @@ export class Theatre1Component implements OnInit {
   reverseSelectedSeats() {
     this.reservedSeats = 1;
     this.selectedIndex = [];
+    this.paymentAmount = 0;
   }
 
   confirmBooking() {
@@ -119,4 +123,8 @@ export class Theatre1Component implements OnInit {
     this.seatsUpdateEvent.emit(this.showDetails.id);
   }
 
+  calculatePaymentAmount() {
+    this.paymentAmount = (this.showDetails.pricePerTicket * this.selectedIndex.length) - 
+    (this.showDetails.pricePerTicket * this.selectedIndex.length)*(this.showDetails.discountPercentage/100)
+  }
 }
