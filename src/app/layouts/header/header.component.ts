@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   toggleAuthenticate() {
     this.isAuthenticated = !this.isAuthenticated;
     this.hasAdminRole(true);
+    localStorage.setItem("adminUser","true");
     this.router.navigate(['/admin/profile']);
     this.modalService.dismissAll();
   }

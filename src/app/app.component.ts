@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'threatre-pro';
-
-  constructor(private router: Router) {}
-
+  title = 'theatre-pro';
   isAdmin: boolean = false;
+
+  constructor(private router: Router) {
+    var adminUser = localStorage.getItem('adminUser');
+    if(adminUser) {
+      this.isAdmin = true;
+    }
+  }
 
   hasAdmin(admin: boolean) {
     this.isAdmin = admin;

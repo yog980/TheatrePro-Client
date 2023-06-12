@@ -1,3 +1,6 @@
+<div class="alert alert-{{ alertType }}" style="font-size: 40px;" role="alert" *ngIf="hasAlert">
+  {{ message }}
+</div>
 <table class="table table-striped" style="font-size: 30px;">
   <thead>
     <tr>
@@ -32,7 +35,7 @@
       <td>{{ details.seatsBooked }}</td>
       <td>{{ details.discountPercentage }}</td>
       <td>
-        <a style="margin:20px;color: 'red'" ><i class="fa fa-trash"></i></a>
+        <a style="margin:20px;color: 'red'" (click)="deleteBookingDetails(details.bookingId)"><i class="fa fa-trash"></i></a>
       </td>
     </tr>
   </tbody>

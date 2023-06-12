@@ -9,6 +9,9 @@ import { UserServiceService } from '../admin-user/user-service.service';
 })
 export class AdminBookingDetailsComponent implements OnInit {
   bookingDetails: BookingDetails[] = [];
+  message: string = '';
+  alertType: string = '';
+  hasAlert: boolean = false;
 
   constructor(private userService: UserServiceService) { }
 
@@ -21,6 +24,27 @@ export class AdminBookingDetailsComponent implements OnInit {
       this.bookingDetails = data;
     },
     error1 => console.log(error1))
+  }
+
+  deleteBookingDetails(bookingId: number) {
+    if(confirm("Are you sure to delete booking Details ?")) {
+      this.userService.deleteBooking(bookingId).subscribe((data) => {
+        this.alertType = 'success';
+        this.getAllBookingDetails();
+       this.updateAlert();
+        this.message = 'Booking Details deleted successfully !!!'
+      },error1 => {
+        console.error(error1);
+      });
+    }
+  }
+
+
+  updateAlert() {
+    this.hasAlert = true;
+    setTimeout(() => {
+      this.hasAlert = false
+    },5000)
   }
 
 }

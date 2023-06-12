@@ -27,4 +27,8 @@ export class UserServiceService {
   bookSeats(data: any):Observable<any> {
     return this.http.post(`${environment.apiUrl}/api/movie/book-seats-multiple`,data);
   }
+
+  deleteBooking(bookingId: number): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/api/movie/${bookingId}/delete-booking`,null);
+  }
 }
